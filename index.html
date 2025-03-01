@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>نمایش اتوماتیک لینک‌ها</title>
+  <!-- بوتسترپ CSS از CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f8f9fa;
+      padding: 20px;
+    }
+    .iframe-container {
+      position: relative;
+      width: 100%;
+      padding-bottom: 56.25%; /* نسبت 16:9 */
+      overflow: hidden;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      background: #fff;
+    }
+    .iframe-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="row" id="iframeRow">
+      <!-- کادرها به صورت داینامیک توسط جاوااسکریپت ایجاد می‌شوند -->
+    </div>
+  </div>
+
+  <script>
+    // آرایه‌ای شامل لینک‌های مستقیم
+    const links = [
+      "https://perilastronaut.com/qmdqaxuc4s?key=bace43ce54326e8356d611a38ad7de0d",
+      "https://perilastronaut.com/m25n9c8u16?key=6d68484c0e72ef529029f92305ed5c3f",
+      "https://perilastronaut.com/pw3unxappw?key=74b53b157a8e8dd9c9f4b72ddb897db1",
+      "https://perilastronaut.com/qyff52n0z?key=708a61808e0ef9677e0d593585d5aef8",
+      "https://perilastronaut.com/xutunsya?key=988ca46cbed79ef5f17bdacbe02d97db",
+      "https://perilastronaut.com/fjd8pnwi?key=c093336de7a32a218601dfcb31c9d502",
+      "https://perilastronaut.com/zpi15gxxe?key=ef8de9929baf5ba17a1f2be2a03263b3",
+      "https://perilastronaut.com/xhgg6r4h9p?key=73187ae2b682ed9279075a5f4531f532",
+      "https://perilastronaut.com/fwch1h6z?key=e2ff45fa079ea35aa441fdba05e1c110",
+      "https://perilastronaut.com/h7gvv5ss?key=7bb8a624d743648b048b2969b5f324ef"
+    ];
+
+    const row = document.getElementById('iframeRow');
+
+    // برای هر لینک یک کادر (iframe) در قالب یک ستون بوتسترپ ایجاد می‌شود
+    links.forEach(link => {
+      const col = document.createElement('div');
+      col.className = 'col-12 col-md-6 col-lg-4 mb-4';
+
+      const container = document.createElement('div');
+      container.className = 'iframe-container';
+
+      const iframe = document.createElement('iframe');
+      iframe.src = link;
+      iframe.loading = "lazy"; // فعال کردن lazy loading
+
+      container.appendChild(iframe);
+      col.appendChild(container);
+      row.appendChild(col);
+    });
+  </script>
+
+  <!-- بوتسترپ JS، Popper.js و jQuery از CDN -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"></script>
+</body>
+  </html>
