@@ -56,6 +56,33 @@
             align-items: center;
         }
 
+        .direct-link-ad {
+            width: 100%;
+            min-height: 90px;
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .ad-link {
+            display: inline-block;
+            width: 100%;
+            text-align: center;
+            padding: 15px;
+            background: #fff;
+            text-decoration: none;
+            color: #333;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+        .ad-link:hover {
+            background: #f8f8f8;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
         @media (max-width: 768px) {
             .ad-section {
                 padding: 10px;
@@ -89,6 +116,16 @@
             <script async="async" data-cfasync="false" src="//pl26027188.effectiveratecpm.com/d5f30624cd050b2a69345b839124b419/invoke.js"></script>
             <div id="container-d5f30624cd050b2a69345b839124b419"></div>
         </div>
+
+        <!-- Direct Link Ad Section -->
+        <div class="ad-section direct-link-ad">
+            <a href="https://www.effectiveratecpm.com/z86dy0gskb?key=1fac040413f1a8fd0967031381774f1c" 
+               class="ad-link" 
+               target="_blank" 
+               rel="noopener noreferrer">
+                Special Offer
+            </a>
+        </div>
     </div>
 
     <script>
@@ -117,11 +154,17 @@
             setTimeout(function() {
                 const adContainers = document.querySelectorAll('.ad-section');
                 adContainers.forEach(container => {
-                    if (!container.querySelector('iframe')) {
+                    if (!container.querySelector('iframe') && !container.querySelector('.ad-link')) {
                         container.style.display = 'none';
                     }
                 });
             }, 2000);
+        });
+
+        // Track direct link clicks
+        document.querySelector('.ad-link').addEventListener('click', function(e) {
+            console.log('Direct link clicked');
+            // Add any additional tracking code here if needed
         });
     </script>
 </body>
