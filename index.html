@@ -1,40 +1,30 @@
 <!DOCTYPE html>
 <html lang="fa">
 <head>
-  <meta charset="UTF-8">
-  <title>صفحه با تبلیغات</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تبلیغات</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        .ad-container {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-  <h1>صفحه نمونه</h1>
-  <p>این صفحه شامل تبلیغات است که پس از بارگذاری نمایش داده می‌شوند.</p>
+    <div class="ad-container">
+        <div id="ad_unit" data-unit-id="11526"></div>
+        <script src="https://api.fpadserver.com/static/js/advert_renderer.js"></script>
 
-  <!-- محلی برای نمایش تبلیغات -->
-  <div id="ads-container"></div>
-
-  <script>
-    window.addEventListener("load", function() {
-      var container = document.getElementById("ads-container");
-
-      // تبلیغ اول
-      var ad1 = document.createElement("div");
-      ad1.id = "ad_unit_11526";
-      ad1.setAttribute("data-unit-id", "11526");
-      container.appendChild(ad1);
-
-      var script1 = document.createElement("script");
-      script1.src = "https://api.fpadserver.com/static/js/advert_renderer.js";
-      container.appendChild(script1);
-
-      // تبلیغ دوم
-      var ad2 = document.createElement("div");
-      ad2.id = "ad_unit_11527";
-      ad2.setAttribute("data-unit-id", "11527");
-      container.appendChild(ad2);
-
-      var script2 = document.createElement("script");
-      script2.src = "https://api.fpadserver.com/static/js/advert_renderer.js";
-      container.appendChild(script2);
-    });
-  </script>
+        <div id="ad_unit" data-unit-id="11527"></div>
+        <script src="https://api.fpadserver.com/static/js/advert_renderer.js"></script>
+    </div>
 </body>
 </html>
