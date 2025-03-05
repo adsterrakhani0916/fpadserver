@@ -31,7 +31,7 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        .top-ad {
+        .top-ad, .middle-ad, .bottom-ad {
             width: 100%;
             min-height: 90px;
             display: flex;
@@ -40,57 +40,117 @@
         }
 
         .middle-ad {
-            width: 100%;
             min-height: 250px;
             margin: 30px 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
-        .bottom-ad {
+        /* Modal Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
             width: 100%;
-            min-height: 90px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            animation: fadeIn 0.3s ease-in-out;
         }
 
-        .direct-link-ad {
-            width: 100%;
-            min-height: 90px;
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+        .modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1001;
+            max-width: 90%;
+            width: 400px;
+            animation: slideIn 0.4s ease-out;
         }
 
-        .ad-link {
-            display: inline-block;
-            width: 100%;
+        .modal-content {
             text-align: center;
-            padding: 15px;
-            background: #fff;
-            text-decoration: none;
-            color: #333;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            transition: all 0.3s ease;
         }
 
-        .ad-link:hover {
-            background: #f8f8f8;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        .modal-link {
+            display: block;
+            padding: 15px 25px;
+            margin: 20px auto;
+            background: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s ease;
+        }
+
+        .modal-link:hover {
+            background: #45a049;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: #000;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translate(-50%, -60%);
+                opacity: 0;
+            }
+            to {
+                transform: translate(-50%, -50%);
+                opacity: 1;
+            }
         }
 
         @media (max-width: 768px) {
             .ad-section {
                 padding: 10px;
             }
+            .modal {
+                width: 95%;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Modal Overlay -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <div class="modal-content">
+                <h3>Special Offer!</h3>
+                <p>Don't miss this exclusive opportunity</p>
+                <a href="https://www.effectiveratecpm.com/z86dy0gskb?key=1fac040413f1a8fd0967031381774f1c" 
+                   class="modal-link" 
+                   target="_blank" 
+                   rel="noopener noreferrer"
+                   onclick="closeModal()">
+                    Click Here
+                </a>
+            </div>
+        </div>
+    </div>
+
     <div class="ad-container">
         <!-- Top Ad Section -->
         <div class="ad-section top-ad">
@@ -116,20 +176,32 @@
             <script async="async" data-cfasync="false" src="//pl26027188.effectiveratecpm.com/d5f30624cd050b2a69345b839124b419/invoke.js"></script>
             <div id="container-d5f30624cd050b2a69345b839124b419"></div>
         </div>
-
-        <!-- Direct Link Ad Section -->
-        <div class="ad-section direct-link-ad">
-            <a href="https://www.effectiveratecpm.com/z86dy0gskb?key=1fac040413f1a8fd0967031381774f1c" 
-               class="ad-link" 
-               target="_blank" 
-               rel="noopener noreferrer">
-                Special Offer
-            </a>
-        </div>
     </div>
 
     <script>
-        // Function to check viewport and adjust ad containers if needed
+        // Show modal automatically after page load
+        window.addEventListener('load', function() {
+            setTimeout(showModal, 2000); // Show after 2 seconds
+        });
+
+        function showModal() {
+            document.getElementById('modalOverlay').style.display = 'block';
+            // Store that modal has been shown
+            localStorage.setItem('modalShown', 'true');
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').style.display = 'none';
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeModal();
+            }
+        });
+
+        // Viewport check function
         function checkViewport() {
             const adSections = document.querySelectorAll('.ad-section');
             const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
@@ -143,28 +215,19 @@
             });
         }
 
-        // Run on page load
         window.addEventListener('load', checkViewport);
-        
-        // Run on window resize
         window.addEventListener('resize', checkViewport);
 
-        // Ensure ads load properly
+        // Check ad loading
         window.addEventListener('load', function() {
             setTimeout(function() {
                 const adContainers = document.querySelectorAll('.ad-section');
                 adContainers.forEach(container => {
-                    if (!container.querySelector('iframe') && !container.querySelector('.ad-link')) {
+                    if (!container.querySelector('iframe')) {
                         container.style.display = 'none';
                     }
                 });
             }, 2000);
-        });
-
-        // Track direct link clicks
-        document.querySelector('.ad-link').addEventListener('click', function(e) {
-            console.log('Direct link clicked');
-            // Add any additional tracking code here if needed
         });
     </script>
 </body>
