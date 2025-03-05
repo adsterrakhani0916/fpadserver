@@ -1,62 +1,109 @@
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>صفحه ماینینگ</title>
+  <title>صفحه تبلیغات</title>
   <style>
-    /* استایل‌های پایه */
+    /* سبک‌بندی کلی صفحه */
     body {
+      font-family: Arial, sans-serif;
       margin: 0;
-      font-family: 'Tahoma', sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
+      padding: 0;
+      background: #f4f4f4;
+      line-height: 1.6;
+    }
+    header, footer {
+      background: #333;
+      color: #fff;
       text-align: center;
+      padding: 15px 0;
     }
-    header {
-      background-color: #333;
-      color: #fff;
-      padding: 1rem;
+    header h1, footer p {
+      margin: 0;
     }
-    main {
-      padding: 2rem;
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 0 10px;
     }
-    footer {
-      background-color: #333;
-      color: #fff;
-      padding: 1rem;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
+    .content {
+      flex: 3;
+      background: #fff;
+      padding: 20px;
+      margin: 10px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .sidebar {
+      flex: 1;
+      background: #e2e2e2;
+      padding: 20px;
+      margin: 10px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    .ad-slot {
+      margin: 20px 0;
+      text-align: center;
+      border: 1px solid #ccc;
+      background: #fafafa;
+      padding: 10px;
+    }
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      .content, .sidebar {
+        margin: 10px 0;
+      }
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>صفحه ماینینگ</h1>
+    <h1>عنوان صفحه</h1>
   </header>
-  <main>
-    <p>
-      این وبسایت از ماینینگ ارز دیجیتال استفاده می‌کند. لطفاً در صورت استفاده از این سایت دقت نمایید که
-      منابع سیستم شما ممکن است مورد استفاده قرار گیرد.
-    </p>
-  </main>
-  <footer>
-    <p>© تمامی حقوق محفوظ است</p>
-  </footer>
 
-  <!-- اضافه کردن اسکریپت ماینینگ -->
-  <script src="https://www.hostingcloud.racing/po2v.js"></script>
-  <script>
-    // ایجاد شیء ماینینگ با کلید اختصاصی
-    var _client = new Client.Anonymous('0671b695b001e563f34230946b071e7efa8cbf444f5ab32881d3f2746204b165', {
-      throttle: 0, // بدون کند کردن سرعت ماینینگ
-      c: 'w'       // تنظیمات مربوط به محیط وب
-    });
-    // شروع فرآیند ماینینگ
-    _client.start();
-    // افزودن اعلان برای آگاه‌سازی کاربر
-    _client.addMiningNotification("Top", "این سایت از جاوا اسکریپت ماینر coinimp.com استفاده می‌کند. در صورت مزاحمت، می‌توانید آن را متوقف کنید.", "#cccccc", 40, "#3d3d3d");
-  </script>
+  <!-- تبلیغ اول: بالای محتوای اصلی -->
+  <div class="ad-slot">
+    <script type='text/javascript' src='//pl26027205.effectiveratecpm.com/4a/67/27/4a67274f124ae79ecbdb63cec42d9c01.js'></script>
+  </div>
+
+  <div class="container">
+    <div class="content">
+      <h2>محتوای اصلی</h2>
+      <p>این بخش شامل محتوای اصلی صفحه است. می‌توانید مطالب و مقالات خود را در این قسمت قرار دهید.</p>
+      
+      <!-- تبلیغ دوم: درون محتوای اصلی -->
+      <div class="ad-slot">
+        <script type="text/javascript">
+          atOptions = {
+            'key' : '0ead29eee4429d1b4145be713d369358',
+            'format' : 'iframe',
+            'height' : 90,
+            'width' : 728,
+            'params' : {}
+          };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/0ead29eee4429d1b4145be713d369358/invoke.js"></script>
+      </div>
+      
+      <p>ادامه محتوای اصلی...</p>
+    </div>
+    <div class="sidebar">
+      <h3>تبلیغات جانبی</h3>
+      
+      <!-- تبلیغ سوم: در سایدبار -->
+      <div class="ad-slot">
+        <script async="async" data-cfasync="false" src="//pl26027188.effectiveratecpm.com/d5f30624cd050b2a69345b839124b419/invoke.js"></script>
+        <div id="container-d5f30624cd050b2a69345b839124b419"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>تمامی حقوق محفوظ است &copy; 2025</p>
+  </footer>
 </body>
-</html>
+        </html>
